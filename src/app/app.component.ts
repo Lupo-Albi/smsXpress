@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 declare var $: any;
 
@@ -9,6 +11,19 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'smsXpress-angular';
+
+  public modalRef: BsModalRef;  // Variável para manter uma referência do modal
+  config = 
+  {
+    backdrop:true,
+    ignoreBackdropClick: true // Opção para não dispensar o modal ao clicar numa área fora dele
+  };
+  constructor(private modalService: BsModalService) { } // serviço do ngx-bootstrap para mostrar o modal
+
+  public openModal(template: TemplateRef<any>)
+  {
+    this.modalRef = this.modalService.show(template, this.config); // Quando o botão é clicado, a referência ao modal é mantida e o nome local ao template é passado para o serviço
+  }
 
   public ngOnInit()
   {

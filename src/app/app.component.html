@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">smsXpress</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
@@ -15,7 +15,24 @@
           <a class="nav-link js-scroll-trigger" href="#features">Envie SMS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Consultas</a>
+          <a class="nav-link nav-btn nav-btn-outline" (click)="openModal(template)">Consultas</a>
+
+          <ng-template #template>
+            <div class="modal-header">
+              <h4 class="modal-title pull-left">Consultas</h4>
+              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                    <label for="protocolo">Insira o protocolo do SMS enviado:</label>
+                    <input type="text" class="form-control" id="protocolo" placeholder="XXXX-YYYY-ZZZZ">
+                  </div>
+              </form>
+            </div>
+          </ng-template>
         </li>
       </ul>
     </div>
