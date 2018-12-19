@@ -2,6 +2,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormControl } from '@angular/forms';
+import { ApiService } from './api.service';
 
 declare var $: any;
 
@@ -13,13 +14,19 @@ declare var $: any;
 export class AppComponent {
   title = 'smsXpress-angular';
 
+  sms: any;
+
+  constructor(
+    private modalService: BsModalService, // serviço do ngx-bootstrap para mostrar o modal
+    private api: ApiService
+    ) { } 
+
   public modalRef: BsModalRef;  // Variável para manter uma referência do modal
   config = 
   {
     backdrop:true,
     ignoreBackdropClick: true // Opção para não dispensar o modal ao clicar numa área fora dele
   };
-  constructor(private modalService: BsModalService) { } // serviço do ngx-bootstrap para mostrar o modal
 
   public openModal(template: TemplateRef<any>)
   {

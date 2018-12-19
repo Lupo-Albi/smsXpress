@@ -2,11 +2,16 @@
 var express = require("express");
 // Criando a variável para as rotas
 var router = express.Router();
+// Trazendo o controlador SMS
+var SMSController = require('../controllers/sms.controller');
 
-// Importando o módulo roteador de sms
-var SMS = require('./api/sms.router');
+// Mapeando cada API para as funções do controlador
 
-router.use('/sms', SMS);
+/* Buscar um único registro de SMS pelo protocolo */
+router.get('/:protocolo', SMSController.findSMSbyProtocol);
+
+/* Salvar um registro de SMS */
+router.post('/', SMSController.criarSMS);
 
 // Exportando esse módulo
 module.exports = router;
